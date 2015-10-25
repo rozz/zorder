@@ -14,15 +14,17 @@ public class ZorderTest {
     public void shouldOrderTwoDimensionalMatrix() {
         //given
         final NthDimMatrix<Integer> simpleMatrix = NthDimMatrix.createMatrix(
-                new Integer[] {1,2},
-                new Integer[] {3,4}
+                new Integer[][] {
+                        {1,2},
+                        {3,4}
+                }
                 );
 
         final Zorder<Integer> zorder =
                 ZorderFactory.getInstance().getNDimensionalFunction(2, Integer.class);
 
         //when
-        final Collection<Integer> orderedIntegers = zorder.getElementsInLinearOrder(simpleMatrix);
+        final Collection<Integer> orderedIntegers = zorder.apply(simpleMatrix);
 
         //then
         assertArrayEquals(
